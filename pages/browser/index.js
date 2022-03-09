@@ -1,21 +1,17 @@
+import Head from "next/head";
 import React from "react";
-
 import { useUserAgent } from 'next-useragent'
-
 import { useEffect } from "react";
 import { useState } from "react";
-
-function Browser(props) {
-
+const Browser = (props) => {
     const [ua, setUa] = useState()
-    
     useEffect(()=>{
-      if (props.uaString) {
+        if (props.uaString) {
         setUa(useUserAgent(props.uaString))
-      } else {
+        } else {
         setUa(useUserAgent(window.navigator.userAgent))
-      }
-    })
+        }
+    },[])
 
   return (
     <>
@@ -23,5 +19,4 @@ function Browser(props) {
     </>
   );
 };
-
 export default Browser;
